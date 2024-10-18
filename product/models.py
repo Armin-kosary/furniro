@@ -5,14 +5,26 @@ from uuid import uuid4
 class ProductTag(models.Model):
     title = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.title    
+
 class ProductCategory(models.Model):
     title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
 
 class ProductColor(models.Model):
     title = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.title
+
 class ProductSize(models.Model):
     title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
@@ -32,3 +44,6 @@ class Product(models.Model):
         if not self.product_code:
             self.product_code = uuid4()
         super(Product, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title    
