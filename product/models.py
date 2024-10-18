@@ -3,6 +3,10 @@ from uuid import uuid4
 from django.utils.text import slugify
 # Create your models here.
 
+class ProductImage(models.Model):
+    main_image = models.BooleanField(blank=True)
+    image = models.ImageField
+
 class ProductTag(models.Model):
     title = models.CharField(max_length=20)
 
@@ -29,6 +33,7 @@ class ProductSize(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
+    images = models.ManyToManyField(ProductImage)
     subtitle = models.CharField(max_length=100)
     price = models.IntegerField()
     discount = models.IntegerField(blank=True)
